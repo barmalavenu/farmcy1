@@ -202,5 +202,6 @@ def forgot_password():
     return render_template('forgot_password.html', logged_in='username' in session)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
+
