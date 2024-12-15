@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/static/images/farmcy1.png" alt="Farmcy Logo">
+                <div class="logo-text">
+                    <span class="main-title">Farmcy</span>
+                    <div class="subtitle">Safeguarding Crops for a Sustainable Tomorrow</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/description">About Us</a>
+                {% if not logged_in %}
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
+                {% else %}
+                    <a href="/profile">Profile</a>
+                    <a href="/test">Test</a>
+                    <a href="/logout">Logout</a>
+                {% endif %}
+                <a href="/contact">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="center-contentabout">
+        <h2>About Farmcy</h2>
+        <p>
+            Agriculture is the backbone of our economy and sustains billions of lives worldwide. However, crops near industrial factories often face risks such as pollution, harmful chemicals, and unsustainable practices.
+        </p>
+        <p>
+            Farmcy is a modern solution designed to safeguard crops and empower farmers by assessing the safety of agricultural land near factories. Our platform uses scientific calculations based on chimney height, distance, wind direction, and speed to evaluate the safety of crops.
+        </p>
+
+        <h2>Key Features:</h2>
+        <ul>
+            <li>Helps farmers make informed decisions about crop safety.</li>
+            <li>Encourages sustainable farming practices near industrial areas.</li>
+        </ul>
+
+        <h2>Why Choose Farmcy?</h2>
+        <p>
+            With Farmcy, farmers gain access to vital tools and insights to ensure their crops remain healthy and safe. Together, we can protect agriculture and promote a sustainable future for all.
+        </p>
+
+        <div class="button-group">
+            {% if not logged_in %}
+                <form action="/register" method="get">
+                    <button type="submit">Register</button>
+                </form>
+                <br>
+                <form action="/login" method="get">
+                    <button type="submit">Login</button>
+                </form>
+            {% else %}
+                <form action="/logout" method="POST">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p align="center">&copy; 2024 Farmcy. All Rights Reserved. | <a href="/contact">Contact Us</a></p>
+    </footer>
+</body>
+</html>

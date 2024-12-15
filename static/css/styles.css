@@ -1,0 +1,238 @@
+/* General Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fcfdfd, #f8f9f9);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Common Button Styling */
+button {
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(90deg, #02f760, #06d5a8);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #06d5a8, #02f760);
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #02f760, #06d5a8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+
+nav .logo img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+nav .logo .main-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+}
+nav .logo .subtitle {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: rgb(8, 8, 8);
+}
+
+nav .nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+nav .nav-links a:hover {
+    color: #ffeb3b;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Centered Content Section */
+.center-content, .form-container, .profile-page {
+    background: white;
+    padding: 50px 20px;
+    width: 500px;
+    height: 415px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+
+.center-contentabout{
+    background: white;
+padding: 50px 20px;
+width: 500px;
+height: 500px;
+border-radius: 12px;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+max-width: 600px;
+margin: 30px auto;
+text-align: center;
+}
+
+.form-containertest{
+    background: white;
+    padding: 50px 20px;
+    width: 500px;
+    height: 470px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+ 
+
+.center-content h1, .profile-page h1 {
+    font-weight: bold;
+    color: #06a77d;
+}
+
+.center-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.profile-page h1, .form-containertest h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.center-content p, .profile-page p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Input Row Styling */
+.input-row, .input-row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-row label, .input-row1 label {
+    font-size: 1.2rem;
+    color: #444;
+    flex-basis: 40%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.input-row input, .input-row1 input, .input-row textarea {
+    flex-basis: 55%;
+    font-size: 1.1rem;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border: 1px solid #06a77d;
+    box-shadow: 0 0 5px rgba(6, 167, 125, 0.5);
+}
+
+/* Flash Messages */
+.flash-messages {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    background: #ffeb3b;
+    color: #333;
+    font-size: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #eef2f1;
+    color: rgb(5, 5, 5);
+    font-size: 1rem;
+    margin-top: 30px;
+}
+
+footer a {
+    color: rgb(6, 6, 6);
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+    color: #ac9c0a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .center-content, .form-container, .profile-page, .form-containertest {
+        width: 90%;
+    }
+
+    .input-row, .input-row1 {
+        flex-direction: column;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .input-row label, .input-row1 label {
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    .input-row input, .input-row1 input {
+        flex-basis: 100%;
+    }
+}

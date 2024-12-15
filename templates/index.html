@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Farmcy - Safeguarding crops for a sustainable tomorrow. Learn how to protect your crops with our innovative tools and solutions.">
+    <title>Farmcy</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/static/images/farmcy1.png" alt="Farmcy Logo">
+                <div class="logo-text">
+                    
+                    <span class="main-title">Farmcy</span>
+                    <div class="subtitle">Safeguarding Crops for a Sustainable Tomorrow</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/description">About Us</a>
+                {% if not logged_in %}
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
+                {% else %}
+                    <a href="/profile">Profile</a>
+                    <a href="/test">Test</a>
+                    <a href="/logout">Logout</a>
+                {% endif %}
+                <a href="/contact">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="center-content">
+            <h1>Farmcy</h1>
+            <img src="/static/images/farmcy1.png" alt="Farmcy Logo" height="180px" width="180px">
+            
+            <h2>Safeguarding Crops for a Sustainable Tomorrow</h2>
+            <button onclick="location.href='/description'">Get Started</button>
+        </div>
+        <footer>
+            <p align="center">&copy; 2024 Farmcy. All Rights Reserved. | <a href="/contact">Contact Us</a></p>
+        </footer>
+    </main>
+
+    
+</body>
+</html>

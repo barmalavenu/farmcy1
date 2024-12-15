@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Crop Safety</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+   
+    <nav>
+        <div class="logo">
+            <img src="/static/images/farmcy1.png" alt="Farmcy Logo">
+            <div class="logo-text">
+                <span class="main-title">Farmcy</span>
+                <div class="subtitle">Safeguarding Crops for a Sustainable Tomorrow</div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/description">About Us</a>
+            {% if not logged_in %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% else %}
+                <a href="/profile">Profile</a>
+                <a href="/test">Test</a>
+                <a href="/logout">Logout</a>
+            {% endif %}
+            <a href="/contact">Contact Us</a>
+        </div>
+    </nav>
+
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <p class="flash-{{ category }}" id="flash-{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        
+        function hideFlashMessages() {
+            const messages = document.querySelectorAll(".flash-messages p");
+            messages.forEach((message) => {
+                setTimeout(() => {
+                    message.style.display = "none"; 
+                }, 3000); 
+            });
+        }
+
+   
+        document.addEventListener("DOMContentLoaded", hideFlashMessages);
+    </script>
+
+ 
+    <form method="POST" action="/test" class="form-containertest">
+        <h3>Now You Can Test Crop Safety</h3>
+        <br><br>
+
+       
+        <div class="input-row1">
+            <label for="chimney_height">Chimney Height (in meters):</label>
+            <input type="number" id="chimney_height" name="chimney_height" required>
+        </div>
+        <div class="input-row1">
+            <label for="distance">Distance (in meters):</label>
+            <input type="number" id="distance" name="distance" required>
+        </div>
+        <div class="input-row1">
+            <label for="wind_direction">Wind Direction (in degrees):</label>
+            <input type="number" id="wind_direction" name="wind_direction" required>
+        </div>
+        <div class="input-row1">
+            <label for="wind_speed">Wind Speed (in km/h):</label>
+            <input type="number" id="wind_speed" name="wind_speed" required>
+        </div>
+        <br>
+
+     
+        <button type="submit">Check Safety</button>
+
+        
+        {% if not logged_in %}
+            <div class="button-group">
+                <form action="/register" method="get">
+                    <button type="submit">Register</button>
+                </form>
+                <form action="/login" method="get">
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="button-group">
+                <form action="/logout" method="POST">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </div>
+        {% endif %}
+    </form>
+
+    <footer>
+        <p align="center">&copy; 2024 Farmcy. All Rights Reserved. | <a href="/contact">Contact Us</a></p>
+    </footer>
+</body>
+</html>

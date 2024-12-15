@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/static/images/farmcy1.png" alt="Farmcy Logo">
+            <div class="logo-text">
+                <span class="main-title">Farmcy</span>
+                <div class="subtitle">Safeguarding Crops for a Sustainable Tomorrow</div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/description">About Us</a>
+            {% if not logged_in %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% else %}
+                <a href="/profile">Profile</a>
+                <a href="/test">Test</a>
+                <a href="/logout">Logout</a>
+            {% endif %}
+            <a href="/contact">Contact Us</a>
+        </div>
+    </nav>
+
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <p class="flash-{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        function hideFlashMessages() {
+            const messages = document.querySelectorAll(".flash-messages p");
+            messages.forEach((message) => {
+                setTimeout(() => {
+                    message.style.display = "none"; 
+                }, 3000); 
+            });
+        }
+        document.addEventListener("DOMContentLoaded", hideFlashMessages);
+    </script>
+
+    
+    <div class="profile-page">
+        <h1>Welcome, {{ username.split('@')[0] }}!</h1>
+        <p>Username: {{ username.split('@')[0] }}</p>
+        <p>Email: {{ username }}</p>
+
+        <div class="button-group">
+            <form action="/test" method="get">
+                <button type="submit">Test</button>
+            </form>
+            <br>
+            <form action="/logout" method="POST">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p align="center">&copy; 2024 Farmcy. All Rights Reserved. | <a href="/contact">Contact Us</a></p>
+    </footer>
+</body>
+</html>
