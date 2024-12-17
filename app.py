@@ -14,10 +14,10 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 # MySQL Configuration
 db = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("PASSWORD"),
-    database=os.getenv("DATABASE")
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    password= os.getenv('PASSWORD'),
+    database=os.getenv('DATABASE')
 )
 
 
@@ -44,9 +44,9 @@ def register():
             flash("Username already exists. Please choose a different one.", 'error')
             return render_template('register.html', logged_in='user_id' in session)
 
-        # Hash password and insert new user into DB
-        hashed_password = generate_password_hash(password)
-        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, hashed_password))
+        
+        
+        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
         db.commit()
 
         if cursor.rowcount > 0:
@@ -66,8 +66,11 @@ def login():
         cursor = db.cursor(dictionary=True)
         cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
         user = cursor.fetchone()
+
         
-        if user and check_password_hash(user['password'], password):
+
+        print(user['password'],password)
+        if user and user['password']==password:
             
             session['username'] = user['username']
             flash("Login successful!", 'success')
@@ -147,7 +150,7 @@ def contact():
         
         cursor = db.cursor()
         cursor.execute(
-            "INSERT INTO contact_messages (name, email, message) VALUES (%s, %s, %s)",
+            "INSERT INTO contact_form (name, email, message) VALUES (%s, %s, %s)",
             (name, email, message)
         )
         db.commit()
