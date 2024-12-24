@@ -20,6 +20,48 @@ db = mysql.connector.connect(
     database=os.getenv('DATABASE')
 )
 
+cursor = db.cursor()
+
+create_user_table = """
+CREATE TABLE IF NOT EXISTS users (
+    username VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+"""
+cursor.execute(create_user_table)
+db.commit()
+
+create_test_table = """
+CREATE TABLE IF NOT EXISTS tests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(255),
+    chimney_height INT,
+    distance INT,
+    wind_direction FLOAT,
+    wind_speed INT,
+    result VARCHAR(50),
+    horizontal_distance FLOAT,
+    downwind_concentration FLOAT
+)
+"""
+cursor.execute(create_test_table)
+db.commit()
+
+create_contact_table = """
+CREATE TABLE IF NOT EXISTS contact_form (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+"""
+cursor.execute(create_contact_table)
+db.commit()
+
+cursor.close()
+
 
 @app.route('/')
 def index():
